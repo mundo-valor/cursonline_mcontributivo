@@ -9,7 +9,7 @@
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Desactivar flechas del details */
+        /* Desactivar flechas del details nativo */
         details > summary { list-style: none; outline: none; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] summary ~ * { animation: slideDown 0.3s ease-in-out; }
@@ -19,8 +19,14 @@
         }
         details[open] summary .icono-flecha { transform: rotate(180deg); }
         
-        /* Protección básica anti-clic derecho en el visor */
+        /* Protección básica anti-clic derecho */
         .no-select { user-select: none; -webkit-user-select: none; }
+
+        /* Estilo general scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
     </style>
 </head>
 <body class="text-slate-200 font-sans antialiased min-h-screen relative pb-20 no-select" oncontextmenu="return false;">
@@ -29,14 +35,29 @@
     <div class="fixed inset-0 z-[-2] bg-cover bg-center" style="background-image: url('image_d3f50b.png');"></div>
     <div class="fixed inset-0 z-[-1] bg-slate-900/85 backdrop-blur-sm"></div>
 
-    <!-- NAVEGACIÓN Y LOGOS -->
-    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 flex justify-between items-center">
-        <img src="Valuador Inteligente.png" alt="Valuador Inteligente" class="h-20 md:h-24 object-contain">
-        <img src="LogoMCE.png" alt="Miguel Camacaro Ediciones" class="h-20 md:h-24 object-contain bg-white rounded-xl p-1">
+    <!-- NAVEGACIÓN SUPERIOR CON LOGOS Y BOTONES -->
+    <nav class="w-full bg-slate-900/60 border-b border-slate-700 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo Izquierdo -->
+            <img src="Valuador Inteligente_2.png" alt="Valuador Inteligente" class="h-16 md:h-20 object-contain drop-shadow-md">
+            
+            <!-- Botones de Navegación -->
+            <div class="flex items-center gap-3 md:gap-6 flex-wrap justify-center text-sm md:text-base font-semibold">
+                <a href="#material" class="text-slate-300 hover:text-white transition"><i class="fa-solid fa-folder-open mr-1"></i>Material</a>
+                <a href="#herramientas" class="text-slate-300 hover:text-white transition"><i class="fa-solid fa-toolbox mr-1"></i>Herramientas</a>
+                <a href="#videoteca" class="text-slate-300 hover:text-white transition"><i class="fa-brands fa-youtube mr-1"></i>Videoteca</a>
+                <a href="https://paypal.me/spilimcurso" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 border border-blue-400">
+                    <i class="fa-brands fa-paypal mr-2"></i>Donar
+                </a>
+            </div>
+
+            <!-- Logo Derecho -->
+            <img src="LogoMCE_2.png" alt="Miguel Camacaro Ediciones" class="h-16 md:h-20 object-contain bg-white rounded-lg p-1 drop-shadow-md">
+        </div>
     </nav>
 
     <!-- ENCABEZADO / HERO SECTION -->
-    <header class="max-w-4xl mx-auto px-4 py-12 text-center">
+    <header class="max-w-4xl mx-auto px-4 py-16 text-center">
         <span class="inline-block bg-blue-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 shadow-sm">
             Formación Profesional en Valuación
         </span>
@@ -49,7 +70,7 @@
     </header>
 
     <!-- SECCIÓN DEL AUTOR Y LIBRO -->
-    <section class="max-w-6xl mx-auto px-4 mb-16">
+    <section class="max-w-6xl mx-auto px-4 mb-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Perfil del Profesor -->
             <div class="bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
@@ -80,145 +101,128 @@
         </div>
     </section>
 
-    <!-- MATERIAL DE ESTUDIO Y VISOR INCORPORADO -->
-    <section class="max-w-6xl mx-auto px-4 mb-16">
+    <!-- MATERIAL DE ESTUDIO (ACORDEONES) -->
+    <section id="material" class="max-w-6xl mx-auto px-4 mb-20 scroll-mt-24">
         <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-folder-open text-blue-500 mr-3"></i>Material de Estudio</h2>
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <!-- LISTA DE ARCHIVOS (ACORDEONES) -->
-            <div class="lg:col-span-5 space-y-4">
-                
-                <!-- Acordeón: CLASES -->
-                <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
-                    <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-blue-900/50 text-blue-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-person-chalkboard"></i></div>
-                            <div>
-                                <h3 class="text-lg font-bold text-white">Clases Estructuradas</h3>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
-                    </summary>
-                    <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2">
-                        <button onclick="cargarDocumento('1 Clase Iniciación.pdf', '1 Clase Iniciación')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">1 Clase Iniciación</span></button>
-                        <button onclick="cargarDocumento('Clase 1.pdf', 'Clase 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 1</span></button>
-                        <button onclick="cargarDocumento('Clase 2.pdf', 'Clase 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 2</span></button>
-                        <button onclick="cargarDocumento('Clase 3.pdf', 'Clase 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 3</span></button>
-                        <button onclick="cargarDocumento('Clase 4.pdf', 'Clase 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 4</span></button>
-                        <button onclick="cargarDocumento('Clase 5.pdf', 'Clase 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 5</span></button>
-                        <button onclick="cargarDocumento('Clase 6.pdf', 'Clase 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 6</span></button>
+            <!-- Acordeón: CLASES -->
+            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group h-fit">
+                <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-900/50 text-blue-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-person-chalkboard"></i></div>
+                        <h3 class="text-lg font-bold text-white">Clases Estructuradas</h3>
                     </div>
-                </details>
-
-                <!-- Acordeón: LECTURAS -->
-                <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
-                    <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-emerald-900/50 text-emerald-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-book-open"></i></div>
-                            <div>
-                                <h3 class="text-lg font-bold text-white">Lecturas y Capítulos</h3>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
-                    </summary>
-                    <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2 h-96 overflow-y-auto">
-                        <h4 class="text-emerald-400 font-bold mb-2 text-xs uppercase tracking-wider pl-1">Capítulos del Libro</h4>
-                        <button onclick="cargarDocumento('Capítulo1.pdf', 'Capítulo 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 1</span></button>
-                        <button onclick="cargarDocumento('Capítulo2.pdf', 'Capítulo 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 2</span></button>
-                        <button onclick="cargarDocumento('Capítulo3.pdf', 'Capítulo 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 3</span></button>
-                        <button onclick="cargarDocumento('Capítulo4.pdf', 'Capítulo 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 4</span></button>
-                        <button onclick="cargarDocumento('Capítulo5.pdf', 'Capítulo 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 5</span></button>
-                        <button onclick="cargarDocumento('Capítulo6.pdf', 'Capítulo 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 6</span></button>
-                        <button onclick="cargarDocumento('Capítulo7.pdf', 'Capítulo 7')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 7</span></button>
-                        <button onclick="cargarDocumento('Capítulo8.pdf', 'Capítulo 8')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 8</span></button>
-                        <button onclick="cargarDocumento('Capítulo9.pdf', 'Capítulo 9')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 9</span></button>
-                        <hr class="border-slate-700 my-2">
-                        <h4 class="text-emerald-400 font-bold mb-2 text-xs uppercase tracking-wider pl-1">Lecturas Complementarias</h4>
-                        <button onclick="cargarDocumento('Lectura 1.pdf', 'Lectura 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 1</span></button>
-                        <button onclick="cargarDocumento('Lectura 2.pdf', 'Lectura 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 2</span></button>
-                        <button onclick="cargarDocumento('Lectura 3.pdf', 'Lectura 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 3</span></button>
-                    </div>
-                </details>
-
-                <!-- Acordeón: TALLERES -->
-                <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
-                    <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-amber-900/50 text-amber-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-laptop-code"></i></div>
-                            <div>
-                                <h3 class="text-lg font-bold text-white">Talleres Prácticos</h3>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
-                    </summary>
-                    <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2">
-                        <button onclick="cargarDocumento('Taller_ejercicio 1.pdf', 'Taller Ejercicio 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 1</span></button>
-                        <button onclick="cargarDocumento('Taller_ejercicio 2.pdf', 'Taller Ejercicio 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 2</span></button>
-                        <button onclick="cargarDocumento('Taller_ejercicio 3.pdf', 'Taller Ejercicio 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 3</span></button>
-                    </div>
-                </details>
-
-            </div>
-
-            <!-- VISOR INCORPORADO (IFRAME PROTEGIDO) -->
-            <div class="lg:col-span-7" id="area-visor">
-                <div class="bg-slate-800/90 border border-slate-600 rounded-2xl shadow-2xl overflow-hidden h-[600px] flex flex-col relative">
-                    <!-- Cabecera del visor -->
-                    <div class="bg-slate-900 border-b border-slate-700 px-6 py-3 flex justify-between items-center z-10">
-                        <h3 id="titulo-visor" class="font-bold text-white"><i class="fa-solid fa-eye text-slate-400 mr-2"></i> Visor de Documentos</h3>
-                        <button onclick="cerrarVisor()" id="btn-cerrar-visor" class="hidden text-slate-400 hover:text-red-400 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
-                    </div>
-                    
-                    <!-- Contenedor del documento -->
-                    <div id="contenedor-mensaje" class="flex-1 flex flex-col items-center justify-center text-slate-500">
-                        <i class="fa-solid fa-file-arrow-up text-6xl mb-4 opacity-50"></i>
-                        <p>Selecciona un documento del menú izquierdo para visualizarlo aquí.</p>
-                        <p class="text-xs mt-2 opacity-70">Visualización segura integrada.</p>
-                    </div>
-                    
-                    <!-- El Iframe, escondiendo la barra de herramientas via URL (#toolbar=0) -->
-                    <iframe id="iframe-visor" src="" class="hidden flex-1 w-full h-full bg-white" title="Visor de PDF"></iframe>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                </summary>
+                <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2 max-h-[500px] overflow-y-auto">
+                    <button onclick="abrirDocumento('1 Clase Iniciación.pdf', '1 Clase Iniciación')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">1 Clase Iniciación</span></button>
+                    <button onclick="abrirDocumento('Clase 1.pdf', 'Clase 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 1</span></button>
+                    <button onclick="abrirDocumento('Clase 2.pdf', 'Clase 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 2</span></button>
+                    <button onclick="abrirDocumento('Clase 3.pdf', 'Clase 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 3</span></button>
+                    <button onclick="abrirDocumento('Clase 4.pdf', 'Clase 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 4</span></button>
+                    <button onclick="abrirDocumento('Clase 5.pdf', 'Clase 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 5</span></button>
+                    <button onclick="abrirDocumento('Clase 6.pdf', 'Clase 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 6</span></button>
                 </div>
-            </div>
+            </details>
+
+            <!-- Acordeón: LECTURAS -->
+            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group h-fit">
+                <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-emerald-900/50 text-emerald-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-book-open"></i></div>
+                        <h3 class="text-lg font-bold text-white">Lecturas y Capítulos</h3>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                </summary>
+                <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2 max-h-[500px] overflow-y-auto">
+                    <h4 class="text-emerald-400 font-bold mb-1 mt-2 text-xs uppercase tracking-wider pl-1">Capítulos del Libro</h4>
+                    <button onclick="abrirDocumento('Capítulo1.pdf', 'Capítulo 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 1</span></button>
+                    <button onclick="abrirDocumento('Capítulo2.pdf', 'Capítulo 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 2</span></button>
+                    <button onclick="abrirDocumento('Capítulo3.pdf', 'Capítulo 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 3</span></button>
+                    <button onclick="abrirDocumento('Capítulo4.pdf', 'Capítulo 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 4</span></button>
+                    <button onclick="abrirDocumento('Capítulo5.pdf', 'Capítulo 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 5</span></button>
+                    <button onclick="abrirDocumento('Capítulo6.pdf', 'Capítulo 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 6</span></button>
+                    <button onclick="abrirDocumento('Capítulo7.pdf', 'Capítulo 7')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 7</span></button>
+                    <button onclick="abrirDocumento('Capítulo8.pdf', 'Capítulo 8')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 8</span></button>
+                    <button onclick="abrirDocumento('Capítulo9.pdf', 'Capítulo 9')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 9</span></button>
+                    <hr class="border-slate-700 my-2">
+                    <h4 class="text-emerald-400 font-bold mb-1 text-xs uppercase tracking-wider pl-1">Lecturas Complementarias</h4>
+                    <button onclick="abrirDocumento('Lectura 1.pdf', 'Lectura 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 1</span></button>
+                    <button onclick="abrirDocumento('Lectura 2.pdf', 'Lectura 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 2</span></button>
+                    <button onclick="abrirDocumento('Lectura 3.pdf', 'Lectura 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 3</span></button>
+                    <button onclick="abrirDocumento('Lectura 4.pdf', 'Lectura 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 4</span></button>
+                    <button onclick="abrirDocumento('Lectura 5.pdf', 'Lectura 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 5</span></button>
+                    <button onclick="abrirDocumento('Lectura 6.pdf', 'Lectura 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 6</span></button>
+                </div>
+            </details>
+
+            <!-- Acordeón: TALLERES -->
+            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group h-fit">
+                <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-amber-900/50 text-amber-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3 class="text-lg font-bold text-white">Talleres Prácticos</h3>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                </summary>
+                <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2 max-h-[500px] overflow-y-auto">
+                    <button onclick="abrirDocumento('Taller_ejercicio 1.pdf', 'Taller Ejercicio 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 1</span></button>
+                    <button onclick="abrirDocumento('Taller_ejercicio 2.pdf', 'Taller Ejercicio 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 2</span></button>
+                    <button onclick="abrirDocumento('Taller_ejercicio 3.pdf', 'Taller Ejercicio 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 3</span></button>
+                </div>
+            </details>
 
         </div>
     </section>
 
-    <!-- SECCIÓN DE HERRAMIENTAS WEB -->
-    <section class="max-w-6xl mx-auto px-4 mb-16">
+    <!-- SECCIÓN DE HERRAMIENTAS WEB (ORDEN MODIFICADO) -->
+    <section id="herramientas" class="max-w-6xl mx-auto px-4 mb-20 scroll-mt-24">
         <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-toolbox text-blue-500 mr-3"></i>Herramientas de Cálculo</h2>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 1. Factores -->
             <a href="https://mundo-valor.github.io/Fcontribucion_Fcomercializacion/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-blue-500 hover:bg-slate-800 transition group">
                 <div class="bg-blue-900/50 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition"><i class="fa-solid fa-calculator"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Factores de contribución y comercialización</h3>
                 <p class="text-sm text-slate-400">Aplicación directa del Método Contributivo.</p>
             </a>
-            <a href="https://mundo-valor.github.io/metodo-contributivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 transition group">
-                <div class="bg-indigo-900/50 text-indigo-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition"><i class="fa-solid fa-chart-pie"></i></div>
-                <h3 class="font-bold text-white mb-2 leading-tight">El Método Contributivo</h3>
-                <p class="text-sm text-slate-400">Plataforma base para el desarrollo del modelo.</p>
-            </a>
+
+            <!-- 2. Método Ross-Heideck -->
             <a href="https://mundo-valor.github.io/metodo-ross-heideck2026/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-emerald-500 hover:bg-slate-800 transition group">
                 <div class="bg-emerald-900/50 text-emerald-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-500 group-hover:text-white transition"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Método Ross-Heideck</h3>
                 <p class="text-sm text-slate-400">Verificador de la correcta aplicación del método.</p>
             </a>
+
+            <!-- 3. Método Evolutivo -->
             <a href="https://mundo-valor.github.io/m-todoevolutivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-amber-500 hover:bg-slate-800 transition group">
                 <div class="bg-amber-900/50 text-amber-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-trend-up"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Método Evolutivo</h3>
                 <p class="text-sm text-slate-400">Análisis basado en el Método del Costo.</p>
             </a>
-            <a href="https://mundo-valor.github.io/valuacionintegral-costoRH/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-slate-400 hover:bg-slate-800 transition group lg:col-span-2">
+
+            <!-- 4. Valuación Inmobiliaria Integral -->
+            <a href="https://mundo-valor.github.io/valuacionintegral-costoRH/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-slate-400 hover:bg-slate-800 transition group">
                 <div class="bg-slate-700 text-slate-300 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-slate-500 group-hover:text-white transition"><i class="fa-solid fa-layer-group"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Valuación Inmobiliaria Integral</h3>
                 <p class="text-sm text-slate-400">Plataforma completa de análisis de costo y depreciación.</p>
             </a>
+
+            <!-- 5. El Método Contributivo -->
+            <a href="https://mundo-valor.github.io/metodo-contributivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 transition group lg:col-span-2">
+                <div class="bg-indigo-900/50 text-indigo-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3 class="font-bold text-white mb-2 leading-tight">El Método Contributivo</h3>
+                <p class="text-sm text-slate-400">Plataforma base para el desarrollo del modelo del curso.</p>
+            </a>
+
         </div>
     </section>
 
     <!-- SECCIÓN VIDEOTECA -->
-    <section class="max-w-6xl mx-auto px-4 mb-16">
+    <section id="videoteca" class="max-w-6xl mx-auto px-4 mb-16 scroll-mt-24">
         <div class="bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8 md:p-10">
             <h2 class="text-3xl font-bold text-white mb-8 border-b border-slate-700 pb-4">
                 <i class="fa-brands fa-youtube text-red-500 mr-3"></i>Videoteca del Curso
@@ -244,48 +248,63 @@
     </section>
 
     <!-- PIE DE PÁGINA -->
-    <footer class="max-w-6xl mx-auto px-4 mt-20 text-center border-t border-slate-700 pt-8">
-        <p class="text-slate-400 font-medium text-sm">
+    <footer class="w-full bg-slate-900 border-t border-slate-700 py-8 text-center relative z-10">
+        <p class="text-slate-400 font-medium text-sm mb-4">
             &copy; 2026 Miguel Camacaro Ediciones. Todos los derechos reservados.
         </p>
+        <a href="https://paypal.me/spilimcurso" target="_blank" class="inline-flex items-center text-slate-300 hover:text-white transition">
+            <i class="fa-brands fa-paypal text-blue-500 mr-2 text-xl"></i> Apoyar el proyecto
+        </a>
     </footer>
 
-    <!-- SCRIPT DE CONTROL DEL VISOR -->
+    <!-- ========================================== -->
+    <!-- VISOR MODAL INDIVIDUAL (PANTALLA COMPLETA) -->
+    <!-- ========================================== -->
+    <div id="visor-modal" class="fixed inset-0 z-50 bg-slate-900/95 hidden flex-col transition-opacity duration-300">
+        <!-- Cabecera del visor -->
+        <div class="flex justify-between items-center px-6 py-4 bg-slate-800 border-b border-slate-700 shadow-lg">
+            <h3 id="visor-titulo" class="text-white font-bold text-lg md:text-xl flex items-center">
+                <i class="fa-solid fa-file-pdf text-blue-400 mr-3"></i> <span>Documento</span>
+            </h3>
+            <button onclick="cerrarVisorModal()" class="text-slate-400 hover:text-red-500 transition focus:outline-none" title="Cerrar Visor">
+                <i class="fa-solid fa-xmark text-3xl"></i>
+            </button>
+        </div>
+        <!-- Contenedor del Iframe (Máximo espacio) -->
+        <div class="flex-1 w-full h-full relative bg-slate-800 p-2 md:p-6">
+            <!-- URL parametrizada para bloquear opciones nativas: #toolbar=0 -->
+            <iframe id="visor-iframe" class="w-full h-full rounded shadow-2xl bg-white" src="" title="Visor de PDF"></iframe>
+        </div>
+    </div>
+
+    <!-- SCRIPT DEL VISOR MODAL INDIVIDUAL -->
     <script>
-        function cargarDocumento(rutaArchivo, titulo) {
-            const iframe = document.getElementById('iframe-visor');
-            const mensaje = document.getElementById('contenedor-mensaje');
-            const tituloVisor = document.getElementById('titulo-visor');
-            const btnCerrar = document.getElementById('btn-cerrar-visor');
-            const areaVisor = document.getElementById('area-visor');
-            
-            // Se añade el parámetro #toolbar=0 para ocultar herramientas nativas de descarga e impresión en el PDF
+        const modal = document.getElementById('visor-modal');
+        const iframe = document.getElementById('visor-iframe');
+        const titulo = document.querySelector('#visor-titulo span');
+
+        function abrirDocumento(rutaArchivo, nombreDocumento) {
+            titulo.innerText = nombreDocumento;
+            // Se inyecta #toolbar=0 para bloquear barra de herramientas nativa
             iframe.src = rutaArchivo + "#toolbar=0&navpanes=0&scrollbar=0";
             
-            tituloVisor.innerHTML = `<i class="fa-solid fa-file-pdf text-blue-400 mr-2"></i> ${titulo}`;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
             
-            // Ocultar mensaje inicial y mostrar Iframe
-            mensaje.classList.add('hidden');
-            iframe.classList.remove('hidden');
-            btnCerrar.classList.remove('hidden');
-
-            // Efectuar scroll automático hacia el visor (Especialmente útil en móviles)
-            if(window.innerWidth < 1024) {
-                areaVisor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            // Bloquea el scroll de la página de fondo
+            document.body.style.overflow = 'hidden'; 
         }
 
-        function cerrarVisor() {
-            const iframe = document.getElementById('iframe-visor');
-            const mensaje = document.getElementById('contenedor-mensaje');
-            const tituloVisor = document.getElementById('titulo-visor');
-            const btnCerrar = document.getElementById('btn-cerrar-visor');
-
+        function cerrarVisorModal() {
+            // Se vacía el iframe para detener la lectura del archivo
             iframe.src = "about:blank";
-            iframe.classList.add('hidden');
-            mensaje.classList.remove('hidden');
-            btnCerrar.classList.add('hidden');
-            tituloVisor.innerHTML = `<i class="fa-solid fa-eye text-slate-400 mr-2"></i> Visor de Documentos`;
+            titulo.innerText = "Documento";
+            
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            
+            // Restaura el scroll natural
+            document.body.style.overflow = 'auto'; 
         }
     </script>
 </body>
