@@ -9,32 +9,24 @@
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos para ocultar la flecha por defecto del "details" y personalizarla */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        details[open] summary ~ * {
-            animation: slideDown 0.3s ease-in-out;
-        }
+        /* Desactivar flechas del details */
+        details > summary { list-style: none; outline: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: slideDown 0.3s ease-in-out; }
         @keyframes slideDown {
             0% { opacity: 0; transform: translateY(-10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        /* Icono de rotación para los acordeones */
-        details[open] summary .icono-flecha {
-            transform: rotate(180deg);
-        }
+        details[open] summary .icono-flecha { transform: rotate(180deg); }
+        
+        /* Protección básica anti-clic derecho en el visor */
+        .no-select { user-select: none; -webkit-user-select: none; }
     </style>
 </head>
-<body class="text-slate-200 font-sans antialiased min-h-screen relative pb-20">
+<body class="text-slate-200 font-sans antialiased min-h-screen relative pb-20 no-select" oncontextmenu="return false;">
 
     <!-- FONDOS CON TRATAMIENTO DE VISIBILIDAD -->
-    <!-- Imagen de fondo fijo -->
     <div class="fixed inset-0 z-[-2] bg-cover bg-center" style="background-image: url('image_d3f50b.png');"></div>
-    <!-- Capa oscura translúcida para que el texto sea perfectamente legible -->
     <div class="fixed inset-0 z-[-1] bg-slate-900/85 backdrop-blur-sm"></div>
 
     <!-- NAVEGACIÓN Y LOGOS -->
@@ -59,7 +51,6 @@
     <!-- SECCIÓN DEL AUTOR Y LIBRO -->
     <section class="max-w-6xl mx-auto px-4 mb-16">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
             <!-- Perfil del Profesor -->
             <div class="bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
                 <img src="Informal 3.png" alt="Miguel Camacaro Pérez" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-slate-600">
@@ -86,95 +77,110 @@
                     </p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- VISORES DE ARCHIVOS (CLASES, LECTURAS, TALLERES) -->
+    <!-- MATERIAL DE ESTUDIO Y VISOR INCORPORADO -->
     <section class="max-w-6xl mx-auto px-4 mb-16">
         <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-folder-open text-blue-500 mr-3"></i>Material de Estudio</h2>
         
-        <div class="space-y-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Visor: CLASES -->
-            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
-                <summary class="flex justify-between items-center p-6 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-blue-900/50 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-person-chalkboard"></i></div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Clases Estructuradas</h3>
-                            <p class="text-slate-400 text-sm">Presentaciones modulares del curso</p>
+            <!-- LISTA DE ARCHIVOS (ACORDEONES) -->
+            <div class="lg:col-span-5 space-y-4">
+                
+                <!-- Acordeón: CLASES -->
+                <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-900/50 text-blue-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-person-chalkboard"></i></div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Clases Estructuradas</h3>
+                            </div>
                         </div>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                    </summary>
+                    <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2">
+                        <button onclick="cargarDocumento('1 Clase Iniciación.pdf', '1 Clase Iniciación')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">1 Clase Iniciación</span></button>
+                        <button onclick="cargarDocumento('Clase 1.pdf', 'Clase 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 1</span></button>
+                        <button onclick="cargarDocumento('Clase 2.pdf', 'Clase 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 2</span></button>
+                        <button onclick="cargarDocumento('Clase 3.pdf', 'Clase 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 3</span></button>
+                        <button onclick="cargarDocumento('Clase 4.pdf', 'Clase 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 4</span></button>
+                        <button onclick="cargarDocumento('Clase 5.pdf', 'Clase 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 5</span></button>
+                        <button onclick="cargarDocumento('Clase 6.pdf', 'Clase 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-blue-400 text-xl"></i><span class="text-sm">Clase 6</span></button>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
-                </summary>
-                <div class="p-6 bg-slate-900/50 border-t border-slate-700">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <a href="1 Clase Iniciación.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">1 Clase Iniciación</span></a>
-                        <a href="Clase 1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 1</span></a>
-                        <a href="Clase 2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 2</span></a>
-                        <a href="Clase 3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 3</span></a>
-                        <a href="Clase 4.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 4</span></a>
-                        <a href="Clase 5.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 5</span></a>
-                        <a href="Clase 6.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 6</span></a>
-                    </div>
-                </div>
-            </details>
+                </details>
 
-            <!-- Visor: LECTURAS -->
-            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
-                <summary class="flex justify-between items-center p-6 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-emerald-900/50 text-emerald-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-book-open"></i></div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Lecturas y Capítulos</h3>
-                            <p class="text-slate-400 text-sm">Material teórico y desarrollo del modelo</p>
+                <!-- Acordeón: LECTURAS -->
+                <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-emerald-900/50 text-emerald-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-book-open"></i></div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Lecturas y Capítulos</h3>
+                            </div>
                         </div>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                    </summary>
+                    <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2 h-96 overflow-y-auto">
+                        <h4 class="text-emerald-400 font-bold mb-2 text-xs uppercase tracking-wider pl-1">Capítulos del Libro</h4>
+                        <button onclick="cargarDocumento('Capítulo1.pdf', 'Capítulo 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 1</span></button>
+                        <button onclick="cargarDocumento('Capítulo2.pdf', 'Capítulo 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 2</span></button>
+                        <button onclick="cargarDocumento('Capítulo3.pdf', 'Capítulo 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 3</span></button>
+                        <button onclick="cargarDocumento('Capítulo4.pdf', 'Capítulo 4')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 4</span></button>
+                        <button onclick="cargarDocumento('Capítulo5.pdf', 'Capítulo 5')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 5</span></button>
+                        <button onclick="cargarDocumento('Capítulo6.pdf', 'Capítulo 6')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 6</span></button>
+                        <button onclick="cargarDocumento('Capítulo7.pdf', 'Capítulo 7')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 7</span></button>
+                        <button onclick="cargarDocumento('Capítulo8.pdf', 'Capítulo 8')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 8</span></button>
+                        <button onclick="cargarDocumento('Capítulo9.pdf', 'Capítulo 9')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Capítulo 9</span></button>
+                        <hr class="border-slate-700 my-2">
+                        <h4 class="text-emerald-400 font-bold mb-2 text-xs uppercase tracking-wider pl-1">Lecturas Complementarias</h4>
+                        <button onclick="cargarDocumento('Lectura 1.pdf', 'Lectura 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 1</span></button>
+                        <button onclick="cargarDocumento('Lectura 2.pdf', 'Lectura 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 2</span></button>
+                        <button onclick="cargarDocumento('Lectura 3.pdf', 'Lectura 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-emerald-400 text-xl"></i><span class="text-sm">Lectura 3</span></button>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
-                </summary>
-                <div class="p-6 bg-slate-900/50 border-t border-slate-700">
-                    <h4 class="text-emerald-400 font-bold mb-3 text-sm uppercase tracking-wider">Capítulos del Libro</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                        <a href="Capítulo1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 1</span></a>
-                        <a href="Capítulo2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 2</span></a>
-                        <a href="Capítulo3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 3</span></a>
-                        <a href="Capítulo4.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 4</span></a>
-                        <a href="Capítulo5.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 5</span></a>
-                        <a href="Capítulo6.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 6</span></a>
-                        <a href="Capítulo7.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 7</span></a>
-                        <a href="Capítulo8.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 8</span></a>
-                        <a href="Capítulo9.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 9</span></a>
-                    </div>
-                    <h4 class="text-emerald-400 font-bold mb-3 text-sm uppercase tracking-wider">Lecturas Complementarias</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <a href="Lectura 1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Lectura 1</span></a>
-                        <a href="Lectura 2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Lectura 2</span></a>
-                        <a href="Lectura 3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Lectura 3</span></a>
-                    </div>
-                </div>
-            </details>
+                </details>
 
-            <!-- Visor: TALLERES -->
-            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
-                <summary class="flex justify-between items-center p-6 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-amber-900/50 text-amber-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-laptop-code"></i></div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Talleres Prácticos</h3>
-                            <p class="text-slate-400 text-sm">Ejercicios aplicados para consolidar conocimientos</p>
+                <!-- Acordeón: TALLERES -->
+                <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-amber-900/50 text-amber-400 w-10 h-10 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Talleres Prácticos</h3>
+                            </div>
                         </div>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                    </summary>
+                    <div class="p-4 bg-slate-900/50 border-t border-slate-700 flex flex-col gap-2">
+                        <button onclick="cargarDocumento('Taller_ejercicio 1.pdf', 'Taller Ejercicio 1')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 1</span></button>
+                        <button onclick="cargarDocumento('Taller_ejercicio 2.pdf', 'Taller Ejercicio 2')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 2</span></button>
+                        <button onclick="cargarDocumento('Taller_ejercicio 3.pdf', 'Taller Ejercicio 3')" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/60 border border-slate-700 rounded-lg transition text-left w-full"><i class="fa-solid fa-file-pdf text-amber-400 text-xl"></i><span class="text-sm">Taller Ejercicio 3</span></button>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
-                </summary>
-                <div class="p-6 bg-slate-900/50 border-t border-slate-700">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <a href="Taller_ejercicio 1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Taller Ejercicio 1</span></a>
-                        <a href="Taller_ejercicio 2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Taller Ejercicio 2</span></a>
-                        <a href="Taller_ejercicio 3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Taller Ejercicio 3</span></a>
+                </details>
+
+            </div>
+
+            <!-- VISOR INCORPORADO (IFRAME PROTEGIDO) -->
+            <div class="lg:col-span-7" id="area-visor">
+                <div class="bg-slate-800/90 border border-slate-600 rounded-2xl shadow-2xl overflow-hidden h-[600px] flex flex-col relative">
+                    <!-- Cabecera del visor -->
+                    <div class="bg-slate-900 border-b border-slate-700 px-6 py-3 flex justify-between items-center z-10">
+                        <h3 id="titulo-visor" class="font-bold text-white"><i class="fa-solid fa-eye text-slate-400 mr-2"></i> Visor de Documentos</h3>
+                        <button onclick="cerrarVisor()" id="btn-cerrar-visor" class="hidden text-slate-400 hover:text-red-400 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
                     </div>
+                    
+                    <!-- Contenedor del documento -->
+                    <div id="contenedor-mensaje" class="flex-1 flex flex-col items-center justify-center text-slate-500">
+                        <i class="fa-solid fa-file-arrow-up text-6xl mb-4 opacity-50"></i>
+                        <p>Selecciona un documento del menú izquierdo para visualizarlo aquí.</p>
+                        <p class="text-xs mt-2 opacity-70">Visualización segura integrada.</p>
+                    </div>
+                    
+                    <!-- El Iframe, escondiendo la barra de herramientas via URL (#toolbar=0) -->
+                    <iframe id="iframe-visor" src="" class="hidden flex-1 w-full h-full bg-white" title="Visor de PDF"></iframe>
                 </div>
-            </details>
+            </div>
 
         </div>
     </section>
@@ -183,47 +189,31 @@
     <section class="max-w-6xl mx-auto px-4 mb-16">
         <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-toolbox text-blue-500 mr-3"></i>Herramientas de Cálculo</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
             <a href="https://mundo-valor.github.io/Fcontribucion_Fcomercializacion/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-blue-500 hover:bg-slate-800 transition group">
-                <div class="bg-blue-900/50 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition">
-                    <i class="fa-solid fa-calculator"></i>
-                </div>
+                <div class="bg-blue-900/50 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition"><i class="fa-solid fa-calculator"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Factores de contribución y comercialización</h3>
                 <p class="text-sm text-slate-400">Aplicación directa del Método Contributivo.</p>
             </a>
-
             <a href="https://mundo-valor.github.io/metodo-contributivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 transition group">
-                <div class="bg-indigo-900/50 text-indigo-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </div>
+                <div class="bg-indigo-900/50 text-indigo-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition"><i class="fa-solid fa-chart-pie"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">El Método Contributivo</h3>
                 <p class="text-sm text-slate-400">Plataforma base para el desarrollo del modelo.</p>
             </a>
-
             <a href="https://mundo-valor.github.io/metodo-ross-heideck2026/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-emerald-500 hover:bg-slate-800 transition group">
-                <div class="bg-emerald-900/50 text-emerald-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-500 group-hover:text-white transition">
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-                </div>
+                <div class="bg-emerald-900/50 text-emerald-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-500 group-hover:text-white transition"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Método Ross-Heideck</h3>
                 <p class="text-sm text-slate-400">Verificador de la correcta aplicación del método.</p>
             </a>
-
             <a href="https://mundo-valor.github.io/m-todoevolutivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-amber-500 hover:bg-slate-800 transition group">
-                <div class="bg-amber-900/50 text-amber-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-amber-500 group-hover:text-white transition">
-                    <i class="fa-solid fa-arrow-trend-up"></i>
-                </div>
+                <div class="bg-amber-900/50 text-amber-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fa-solid fa-arrow-trend-up"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Método Evolutivo</h3>
                 <p class="text-sm text-slate-400">Análisis basado en el Método del Costo.</p>
             </a>
-
             <a href="https://mundo-valor.github.io/valuacionintegral-costoRH/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-slate-400 hover:bg-slate-800 transition group lg:col-span-2">
-                <div class="bg-slate-700 text-slate-300 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-slate-500 group-hover:text-white transition">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
+                <div class="bg-slate-700 text-slate-300 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-slate-500 group-hover:text-white transition"><i class="fa-solid fa-layer-group"></i></div>
                 <h3 class="font-bold text-white mb-2 leading-tight">Valuación Inmobiliaria Integral</h3>
                 <p class="text-sm text-slate-400">Plataforma completa de análisis de costo y depreciación.</p>
             </a>
-
         </div>
     </section>
 
@@ -233,53 +223,22 @@
             <h2 class="text-3xl font-bold text-white mb-8 border-b border-slate-700 pb-4">
                 <i class="fa-brands fa-youtube text-red-500 mr-3"></i>Videoteca del Curso
             </h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                <a href="https://www.youtube.com/watch?v=I_zwKSsj3F4" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">1. El Método Contributivo en los avalúos inmobiliarios</span>
-                </a>
-                <a href="https://youtu.be/v8tf9TY8EKU" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">2. Una breve explicación del Método Contributivo</span>
-                </a>
-                <a href="https://youtu.be/HPFnU_bkR9U" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">3. Curso "El Método Contributivo en los Avalúos Inmobiliarios"</span>
-                </a>
-                <a href="https://youtu.be/8JKGznWl6iw" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">4. Taller "El Método Contributivo en los Avalúos Inmobiliarios"</span>
-                </a>
-                <a href="https://youtu.be/YRVIa5V0nqg" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">5. El Método Contributivo y la simulación de escenarios</span>
-                </a>
-                <a href="https://youtu.be/S9JRdmMMbh0" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">6. El Método Contributivo en avalúos de tierra sin urbanizar</span>
-                </a>
-                <a href="https://youtu.be/6Mzr04AKpuA" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">7. Curso: Descubra su libro de cálculo</span>
-                </a>
-                <a href="https://youtu.be/mOr5Hin-Lgg" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">8. Enfoque Probabilístico del Método Contributivo</span>
-                </a>
-                <a href="https://youtu.be/mywY1xL6iU0" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">9. Introducción al Método Contributivo - Capítulo 1</span>
-                </a>
-                <a href="https://youtu.be/C15uonlTspY" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">10. Parte I - El Desafío… método evolutivo al contributivo</span>
-                </a>
-                <a href="https://youtu.be/Uk50DXyHu_8" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">11. Parte II - El Desafío… método evolutivo al contributivo</span>
-                </a>
-                <a href="https://youtu.be/WyghS6Kan9E" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">12. Parte III - El Desafío… método evolutivo al contributivo</span>
-                </a>
-                <a href="https://youtu.be/omuwZu9eXOE" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">13. Parte IV - El Desafío… método evolutivo al contributivo</span>
-                </a>
-                <a href="https://youtu.be/CmSUhMYGYvs" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">14. Podcast: Valor da Terra e Comercialização</span>
-                </a>
-                <a href="https://youtu.be/sS-pX7Nd2EY" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
-                    <i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">15. Podcast: Factor de comercialización en la valuación</span>
-                </a>
+                <a href="https://www.youtube.com/watch?v=I_zwKSsj3F4" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">1. El Método Contributivo en los avalúos inmobiliarios</span></a>
+                <a href="https://youtu.be/v8tf9TY8EKU" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">2. Una breve explicación del Método Contributivo</span></a>
+                <a href="https://youtu.be/HPFnU_bkR9U" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">3. Curso "El Método Contributivo en los Avalúos Inmobiliarios"</span></a>
+                <a href="https://youtu.be/8JKGznWl6iw" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">4. Taller "El Método Contributivo en los Avalúos Inmobiliarios"</span></a>
+                <a href="https://youtu.be/YRVIa5V0nqg" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">5. El Método Contributivo y la simulación de escenarios</span></a>
+                <a href="https://youtu.be/S9JRdmMMbh0" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">6. El Método Contributivo en avalúos de tierra sin urbanizar</span></a>
+                <a href="https://youtu.be/6Mzr04AKpuA" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">7. Curso: Descubra su libro de cálculo</span></a>
+                <a href="https://youtu.be/mOr5Hin-Lgg" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">8. Enfoque Probabilístico del Método Contributivo</span></a>
+                <a href="https://youtu.be/mywY1xL6iU0" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">9. Introducción al Método Contributivo - Capítulo 1</span></a>
+                <a href="https://youtu.be/C15uonlTspY" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">10. Parte I - El Desafío… método evolutivo al contributivo</span></a>
+                <a href="https://youtu.be/Uk50DXyHu_8" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">11. Parte II - El Desafío… método evolutivo al contributivo</span></a>
+                <a href="https://youtu.be/WyghS6Kan9E" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">12. Parte III - El Desafío… método evolutivo al contributivo</span></a>
+                <a href="https://youtu.be/omuwZu9eXOE" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">13. Parte IV - El Desafío… método evolutivo al contributivo</span></a>
+                <a href="https://youtu.be/CmSUhMYGYvs" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">14. Podcast: Valor da Terra e Comercialização</span></a>
+                <a href="https://youtu.be/sS-pX7Nd2EY" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition"><i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">15. Podcast: Factor de comercialización en la valuación</span></a>
             </div>
         </div>
     </section>
@@ -291,5 +250,43 @@
         </p>
     </footer>
 
+    <!-- SCRIPT DE CONTROL DEL VISOR -->
+    <script>
+        function cargarDocumento(rutaArchivo, titulo) {
+            const iframe = document.getElementById('iframe-visor');
+            const mensaje = document.getElementById('contenedor-mensaje');
+            const tituloVisor = document.getElementById('titulo-visor');
+            const btnCerrar = document.getElementById('btn-cerrar-visor');
+            const areaVisor = document.getElementById('area-visor');
+            
+            // Se añade el parámetro #toolbar=0 para ocultar herramientas nativas de descarga e impresión en el PDF
+            iframe.src = rutaArchivo + "#toolbar=0&navpanes=0&scrollbar=0";
+            
+            tituloVisor.innerHTML = `<i class="fa-solid fa-file-pdf text-blue-400 mr-2"></i> ${titulo}`;
+            
+            // Ocultar mensaje inicial y mostrar Iframe
+            mensaje.classList.add('hidden');
+            iframe.classList.remove('hidden');
+            btnCerrar.classList.remove('hidden');
+
+            // Efectuar scroll automático hacia el visor (Especialmente útil en móviles)
+            if(window.innerWidth < 1024) {
+                areaVisor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function cerrarVisor() {
+            const iframe = document.getElementById('iframe-visor');
+            const mensaje = document.getElementById('contenedor-mensaje');
+            const tituloVisor = document.getElementById('titulo-visor');
+            const btnCerrar = document.getElementById('btn-cerrar-visor');
+
+            iframe.src = "about:blank";
+            iframe.classList.add('hidden');
+            mensaje.classList.remove('hidden');
+            btnCerrar.classList.add('hidden');
+            tituloVisor.innerHTML = `<i class="fa-solid fa-eye text-slate-400 mr-2"></i> Visor de Documentos`;
+        }
+    </script>
 </body>
 </html>
