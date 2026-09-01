@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: El Método Contributivo en los Avalúos Inmobiliarios</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos para ocultar la flecha por defecto del "details" y personalizarla */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: slideDown 0.3s ease-in-out;
+        }
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Icono de rotación para los acordeones */
+        details[open] summary .icono-flecha {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-slate-200 font-sans antialiased min-h-screen relative pb-20">
+
+    <!-- FONDOS CON TRATAMIENTO DE VISIBILIDAD -->
+    <!-- Imagen de fondo fijo -->
+    <div class="fixed inset-0 z-[-2] bg-cover bg-center" style="background-image: url('image_d3f50b.png');"></div>
+    <!-- Capa oscura translúcida para que el texto sea perfectamente legible -->
+    <div class="fixed inset-0 z-[-1] bg-slate-900/85 backdrop-blur-sm"></div>
+
+    <!-- NAVEGACIÓN Y LOGOS -->
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 flex justify-between items-center">
+        <img src="Valuador Inteligente_2.png" alt="Valuador Inteligente" class="h-20 md:h-24 object-contain">
+        <img src="LogoMCE_2.png" alt="Miguel Camacaro Ediciones" class="h-20 md:h-24 object-contain bg-white rounded-xl p-1">
+    </nav>
+
+    <!-- ENCABEZADO / HERO SECTION -->
+    <header class="max-w-4xl mx-auto px-4 py-12 text-center">
+        <span class="inline-block bg-blue-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 shadow-sm">
+            Formación Profesional en Valuación
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            El Método Contributivo <br> <span class="text-blue-400">en los Avalúos Inmobiliarios</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Domina la desagregación de valores y la determinación de los factores de comercialización y contribución de la tierra aplicando rigor estadístico.
+        </p>
+    </header>
+
+    <!-- SECCIÓN DEL AUTOR Y LIBRO -->
+    <section class="max-w-6xl mx-auto px-4 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Perfil del Profesor -->
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                <img src="Informal 3.png" alt="Miguel Camacaro Pérez" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-slate-600">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-1">Ing. Miguel Camacaro Pérez</h2>
+                    <h3 class="text-blue-400 font-semibold mb-4 text-sm">Autor y Profesor del Curso</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                        Ingeniero Civil (ULA), M.Sc. en Gerencia de la Construcción (UCLA-Univ. of Florida) y Especialista en Valuación.
+                    </p>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Profesor universitario de estadística y econometría con más de 40 años de experiencia. Pionero en la literatura técnica de tasación y el uso de Inteligencia Artificial aplicada.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bibliografía Base -->
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row gap-6 items-center text-center sm:text-left">
+                <img src="Portada.jpg" alt="Portada El Método Contributivo" class="w-32 md:w-40 object-contain shadow-lg rounded">
+                <div class="flex flex-col justify-center">
+                    <span class="text-amber-400 text-xs font-bold uppercase tracking-wider mb-2"><i class="fa-solid fa-book mr-1"></i> Bibliografía Base</span>
+                    <h2 class="text-xl font-bold text-white mb-3">El Método Contributivo en los Avalúos Inmobiliarios</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Texto guía fundamental. Acompaña el desarrollo teórico y práctico de los módulos, consolidando la metodología de cálculo y simulación.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VISORES DE ARCHIVOS (CLASES, LECTURAS, TALLERES) -->
+    <section class="max-w-6xl mx-auto px-4 mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-folder-open text-blue-500 mr-3"></i>Material de Estudio</h2>
+        
+        <div class="space-y-4">
+            
+            <!-- Visor: CLASES -->
+            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-900/50 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-person-chalkboard"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Clases Estructuradas</h3>
+                            <p class="text-slate-400 text-sm">Presentaciones modulares del curso</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                </summary>
+                <div class="p-6 bg-slate-900/50 border-t border-slate-700">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <a href="1 Clase Iniciación.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">1 Clase Iniciación</span></a>
+                        <a href="Clase 1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 1</span></a>
+                        <a href="Clase 2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 2</span></a>
+                        <a href="Clase 3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 3</span></a>
+                        <a href="Clase 4.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 4</span></a>
+                        <a href="Clase 5.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 5</span></a>
+                        <a href="Clase 6.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-blue-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Clase 6</span></a>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Visor: LECTURAS -->
+            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-emerald-900/50 text-emerald-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-book-open"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Lecturas y Capítulos</h3>
+                            <p class="text-slate-400 text-sm">Material teórico y desarrollo del modelo</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                </summary>
+                <div class="p-6 bg-slate-900/50 border-t border-slate-700">
+                    <h4 class="text-emerald-400 font-bold mb-3 text-sm uppercase tracking-wider">Capítulos del Libro</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                        <a href="Capítulo1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 1</span></a>
+                        <a href="Capítulo2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 2</span></a>
+                        <a href="Capítulo3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 3</span></a>
+                        <a href="Capítulo4.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 4</span></a>
+                        <a href="Capítulo5.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 5</span></a>
+                        <a href="Capítulo6.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 6</span></a>
+                        <a href="Capítulo7.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 7</span></a>
+                        <a href="Capítulo8.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 8</span></a>
+                        <a href="Capítulo9.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Capítulo 9</span></a>
+                    </div>
+                    <h4 class="text-emerald-400 font-bold mb-3 text-sm uppercase tracking-wider">Lecturas Complementarias</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <a href="Lectura 1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Lectura 1</span></a>
+                        <a href="Lectura 2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Lectura 2</span></a>
+                        <a href="Lectura 3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-emerald-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Lectura 3</span></a>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Visor: TALLERES -->
+            <details class="bg-slate-800/80 border border-slate-700 rounded-xl shadow-lg overflow-hidden group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer bg-slate-800 hover:bg-slate-700 transition">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-amber-900/50 text-amber-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Talleres Prácticos</h3>
+                            <p class="text-slate-400 text-sm">Ejercicios aplicados para consolidar conocimientos</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 icono-flecha"></i>
+                </summary>
+                <div class="p-6 bg-slate-900/50 border-t border-slate-700">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <a href="Taller_ejercicio 1.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Taller Ejercicio 1</span></a>
+                        <a href="Taller_ejercicio 2.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Taller Ejercicio 2</span></a>
+                        <a href="Taller_ejercicio 3.pdf" target="_blank" class="flex items-center gap-3 p-3 bg-slate-800 hover:bg-amber-900/40 border border-slate-700 rounded-lg transition"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i><span class="text-sm">Taller Ejercicio 3</span></a>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE HERRAMIENTAS WEB -->
+    <section class="max-w-6xl mx-auto px-4 mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-toolbox text-blue-500 mr-3"></i>Herramientas de Cálculo</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <a href="https://mundo-valor.github.io/Fcontribucion_Fcomercializacion/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-blue-500 hover:bg-slate-800 transition group">
+                <div class="bg-blue-900/50 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <h3 class="font-bold text-white mb-2 leading-tight">Factores de contribución y comercialización</h3>
+                <p class="text-sm text-slate-400">Aplicación directa del Método Contributivo.</p>
+            </a>
+
+            <a href="https://mundo-valor.github.io/metodo-contributivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 transition group">
+                <div class="bg-indigo-900/50 text-indigo-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <h3 class="font-bold text-white mb-2 leading-tight">El Método Contributivo</h3>
+                <p class="text-sm text-slate-400">Plataforma base para el desarrollo del modelo.</p>
+            </a>
+
+            <a href="https://mundo-valor.github.io/metodo-ross-heideck2026/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-emerald-500 hover:bg-slate-800 transition group">
+                <div class="bg-emerald-900/50 text-emerald-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </div>
+                <h3 class="font-bold text-white mb-2 leading-tight">Método Ross-Heideck</h3>
+                <p class="text-sm text-slate-400">Verificador de la correcta aplicación del método.</p>
+            </a>
+
+            <a href="https://mundo-valor.github.io/m-todoevolutivo/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-amber-500 hover:bg-slate-800 transition group">
+                <div class="bg-amber-900/50 text-amber-400 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-amber-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+                <h3 class="font-bold text-white mb-2 leading-tight">Método Evolutivo</h3>
+                <p class="text-sm text-slate-400">Análisis basado en el Método del Costo.</p>
+            </a>
+
+            <a href="https://mundo-valor.github.io/valuacionintegral-costoRH/" target="_blank" class="bg-slate-800/80 rounded-xl p-6 border border-slate-700 hover:border-slate-400 hover:bg-slate-800 transition group lg:col-span-2">
+                <div class="bg-slate-700 text-slate-300 w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-slate-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3 class="font-bold text-white mb-2 leading-tight">Valuación Inmobiliaria Integral</h3>
+                <p class="text-sm text-slate-400">Plataforma completa de análisis de costo y depreciación.</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN VIDEOTECA -->
+    <section class="max-w-6xl mx-auto px-4 mb-16">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8 md:p-10">
+            <h2 class="text-3xl font-bold text-white mb-8 border-b border-slate-700 pb-4">
+                <i class="fa-brands fa-youtube text-red-500 mr-3"></i>Videoteca del Curso
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                <a href="https://www.youtube.com/watch?v=I_zwKSsj3F4" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">1. El Método Contributivo en los avalúos inmobiliarios</span>
+                </a>
+                <a href="https://youtu.be/v8tf9TY8EKU" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">2. Una breve explicación del Método Contributivo</span>
+                </a>
+                <a href="https://youtu.be/HPFnU_bkR9U" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">3. Curso "El Método Contributivo en los Avalúos Inmobiliarios"</span>
+                </a>
+                <a href="https://youtu.be/8JKGznWl6iw" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">4. Taller "El Método Contributivo en los Avalúos Inmobiliarios"</span>
+                </a>
+                <a href="https://youtu.be/YRVIa5V0nqg" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">5. El Método Contributivo y la simulación de escenarios</span>
+                </a>
+                <a href="https://youtu.be/S9JRdmMMbh0" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">6. El Método Contributivo en avalúos de tierra sin urbanizar</span>
+                </a>
+                <a href="https://youtu.be/6Mzr04AKpuA" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">7. Curso: Descubra su libro de cálculo</span>
+                </a>
+                <a href="https://youtu.be/mOr5Hin-Lgg" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">8. Enfoque Probabilístico del Método Contributivo</span>
+                </a>
+                <a href="https://youtu.be/mywY1xL6iU0" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">9. Introducción al Método Contributivo - Capítulo 1</span>
+                </a>
+                <a href="https://youtu.be/C15uonlTspY" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">10. Parte I - El Desafío… método evolutivo al contributivo</span>
+                </a>
+                <a href="https://youtu.be/Uk50DXyHu_8" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">11. Parte II - El Desafío… método evolutivo al contributivo</span>
+                </a>
+                <a href="https://youtu.be/WyghS6Kan9E" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">12. Parte III - El Desafío… método evolutivo al contributivo</span>
+                </a>
+                <a href="https://youtu.be/omuwZu9eXOE" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-circle-play text-red-500 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">13. Parte IV - El Desafío… método evolutivo al contributivo</span>
+                </a>
+                <a href="https://youtu.be/CmSUhMYGYvs" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">14. Podcast: Valor da Terra e Comercialização</span>
+                </a>
+                <a href="https://youtu.be/sS-pX7Nd2EY" target="_blank" class="flex items-start gap-3 hover:bg-slate-700 p-2 rounded transition">
+                    <i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i><span class="text-sm font-medium text-slate-300 hover:text-white">15. Podcast: Factor de comercialización en la valuación</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="max-w-6xl mx-auto px-4 mt-20 text-center border-t border-slate-700 pt-8">
+        <p class="text-slate-400 font-medium text-sm">
+            &copy; 2026 Miguel Camacaro Ediciones. Todos los derechos reservados.
+        </p>
+    </footer>
+
+</body>
+</html>
