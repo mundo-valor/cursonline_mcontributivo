@@ -65,7 +65,7 @@
             El Método Contributivo <br> <span class="text-blue-400">en los Avalúos Inmobiliarios</span>
         </h1>
         <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Domina el Modelo Mandelblatt-Camacaro estimar valores inmobiliarios con simulaciones de escenarios. Determina los factores de comercialización y contribución de la tierra aplicando rigor estadístico.
+            Domina la desagregación de valores y la determinación de los factores de comercialización y contribución de la tierra aplicando rigor estadístico.
         </p>
     </header>
 
@@ -82,7 +82,7 @@
                         Ingeniero Civil (ULA), M.Sc. en Gerencia de la Construcción (UCLA-Univ. of Florida) y Especialista en Valuación.
                     </p>
                     <p class="text-slate-300 text-sm leading-relaxed">
-                        Profesor universitario. Referencia internacional en la integración de Ciencia de la Valuación, Ciencia de Datos e Inteligencia Artificial Generativa.
+                        Profesor universitario de estadística y econometría con más de 40 años de experiencia. Pionero en la literatura técnica de tasación y el uso de Inteligencia Artificial aplicada.
                     </p>
                 </div>
             </div>
@@ -178,7 +178,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE HERRAMIENTAS WEB (ORDEN MODIFICADO) -->
+    <!-- SECCIÓN DE HERRAMIENTAS WEB -->
     <section id="herramientas" class="max-w-6xl mx-auto px-4 mb-20 scroll-mt-24">
         <h2 class="text-3xl font-bold text-white mb-8 text-center"><i class="fa-solid fa-toolbox text-blue-500 mr-3"></i>Herramientas de Cálculo</h2>
         
@@ -253,9 +253,6 @@
         <p class="text-slate-400 font-medium text-sm mb-4">
             &copy; 2026 Miguel Camacaro Ediciones. Todos los derechos reservados.
         </p>
-        <a href="https://paypal.me/spilimcurso" target="_blank" class="inline-flex items-center text-slate-300 hover:text-white transition">
-            <i class="fa-brands fa-paypal text-blue-500 mr-2 text-xl"></i> Apoyar el proyecto
-        </a>
     </footer>
 
     <!-- ========================================== -->
@@ -271,9 +268,8 @@
                 <i class="fa-solid fa-xmark text-3xl"></i>
             </button>
         </div>
-        <!-- Contenedor del Iframe (Máximo espacio) -->
+        <!-- Contenedor del Iframe -->
         <div class="flex-1 w-full h-full relative bg-slate-800 p-2 md:p-6">
-            <!-- URL parametrizada para bloquear opciones nativas: #toolbar=0 -->
             <iframe id="visor-iframe" class="w-full h-full rounded shadow-2xl bg-white" src="" title="Visor de PDF"></iframe>
         </div>
     </div>
@@ -286,7 +282,7 @@
 
         function abrirDocumento(rutaArchivo, nombreDocumento) {
             titulo.innerText = nombreDocumento;
-            // Se inyecta #toolbar=0 para bloquear barra de herramientas nativa
+            // Bloqueamos opciones de descarga con #toolbar=0
             iframe.src = rutaArchivo + "#toolbar=0&navpanes=0&scrollbar=0";
             
             modal.classList.remove('hidden');
@@ -297,7 +293,7 @@
         }
 
         function cerrarVisorModal() {
-            // Se vacía el iframe para detener la lectura del archivo
+            // Se vacía el iframe
             iframe.src = "about:blank";
             titulo.innerText = "Documento";
             
